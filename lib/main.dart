@@ -19,19 +19,20 @@ class WebViewExample extends StatelessWidget {
               OutlinedButton(
                   onPressed: () {
                     openUrl('https://www.youtube.com/embed/A3s07JYA48o',
-                        'Youtube Video');
+                        'Youtube Video', 'This is a youtube video');
                   },
-                  child: const Text('Open Native Android WebView')),
+                  child: const Text('Open Native WebView from Flutter')),
             ],
           ),
         ));
   }
 }
 
-Future<void> openUrl(String url, String title) async {
+Future<void> openUrl(String url, String title, String desc) async {
   try {
     const channel = MethodChannel('com.akshay');
-    await channel.invokeMethod('loadUrl', {'url': url, 'title': title});
+    await channel
+        .invokeMethod('loadUrl', {'url': url, 'title': title, 'desc': desc});
   } catch (e) {
     debugPrint('Error opening url: $e');
   }
