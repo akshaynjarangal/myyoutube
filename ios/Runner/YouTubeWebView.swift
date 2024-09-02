@@ -13,9 +13,18 @@ struct YouTubeWebView: View {
     let videoTitle: String
     let videoDescription: String
     @State private var isLoading = true
-    var body: some View {
+    var body: some View{
+        ZStack{
+            LinearGradient(
+                                gradient: Gradient(colors: [Color.blue, Color.purple]), // Adjust the colors as needed
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                            .edgesIgnoringSafeArea(.all) //
         VStack {
+            
             ZStack{
+                
                 if isLoading {
                     
                     ProgressView() // Activity indicator while loading
@@ -124,6 +133,8 @@ video.addEventListener('play', function() {
                 }
             }
         }
+        }
+        
         
     }
     private func dismissView() {
@@ -131,6 +142,7 @@ video.addEventListener('play', function() {
             rootViewController.dismiss(animated: true, completion: nil)
         }
     }
+    
 }
 
 #Preview {
@@ -153,6 +165,7 @@ struct BlurView: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: Context) {
         // No updates needed
     }
+    
 }
 
 struct WebView: UIViewRepresentable {
